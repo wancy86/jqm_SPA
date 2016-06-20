@@ -3,55 +3,41 @@
 
 <head>
     <meta charset="utf-8">
-    <title>微信</title>
+    <title>列车时刻表查询</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/jquery.mobile-1.4.3.css" />
 </head>
 
 <body>
-
     <div data-role="page" id="index">
         <div data-role="header" data-position="fixed">
-            <h1>微信</h1>
+            <h1>列车时刻表查询</h1>
         </div>
         <div role="main" class="ui-content">
-            <ul data-role="listview" data-inset="true">
-                <li>
-                    <a href="#">
-                        <img src="imgs/user.jpg">
-                        <h2>Broken Bells</h2>
-                        <p>Broken Bells</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="imgs/user.jpg">
-                        <h2>Warning</h2>
-                        <p>Hot Chip</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="imgs/user.jpg">
-                        <h2>Wolfgang Amadeus Phoenix</h2>
-                        <p>Phoenix</p>
-                    </a>
-                </li>
-            </ul>
-            <a href="#" class="ui-btn ui-corner-all" data-rel="back">返回</a>
+            <div class="ui-field-contain">
+                <label>发车站:</label>
+                <input type="text" name="text-basic" id="search-begin" value="">
+            </div>
+            <div class="ui-field-contain">
+                <label>终点站:</label>
+                <input type="text" name="text-basic" id="search-end" value="">
+            </div>
+            <div class="ui-field-contain">
+                <label>车次:</label>
+                <input type="text" name="text-basic" id="search-no" value="">
+            </div>
+            <input type="button" value="搜索" id="search-submit">            
         </div>
         <div data-role="footer" data-position="fixed" data-tap-toggle="false">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#" data-icon="mail" class="ui-btn-active">微信</a></li>
-                    <li><a href="#" data-icon="user">通讯录</a></li>
-                    <li><a href="#" data-icon="eye">发现</a></li>
-                    <li><a href="#" data-icon="user">我</a></li>
+                    <li><a href="#" data-icon="grid" class="ui-btn-active">查询</a></li>
+                    <li><a href="#" data-icon="star">收藏</a></li>
+                    <li><a href="#" data-icon="gear">设置</a></li>
                 </ul>
             </div>
         </div>
     </div>
-
     <div data-role="page" id="detail">
         <div data-role="header" data-position="fixed">
             <h1>列车时刻表查询</h1>
@@ -61,18 +47,17 @@
             </ul>
             <a href="#" class="ui-btn ui-corner-all" data-rel="back">返回</a>
         </div>
+
         <div data-role="footer" data-position="fixed" data-tap-toggle="false">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#" data-icon="mail" class="ui-btn-active">微信</a></li>
-                    <li><a href="#" data-icon="user">通讯录</a></li>
-                    <li><a href="#" data-icon="eye">发现</a></li>
-                    <li><a href="#" data-icon="user">我</a></li>
+                    <li><a href="#" data-icon="grid">查询</a></li>
+                    <li><a href="#" data-icon="star" class="ui-btn-active">收藏</a></li>
+                    <li><a href="#" data-icon="gear">设置</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    
     <script src="js/jquery-1.11.1.js"></script>
     <script src="js/jquery.mobile-1.4.3.js"></script>
     <script>
@@ -100,13 +85,14 @@
             "UseDate": "4:30",
             "StartTime": "2016/06/20 12:25"
         };
-        for (var i = 0; i < 4; i++) {
+        for(var i = 0; i < 4; i++){
             timeTables.push(train);
         }
 
         var _arr = [];
-        for (var i = 0; i < timeTables.length; i++) {
-            var that = timeTables[i];
+        for(var i=0;i<timeTables.length;i++)
+        {
+            var that = timeTables[i];          
             _arr.push('<li><a href="#" data-no="' + that["TrainCode"] + '">' +
                 '<h2>' + that["TrainCode"] + '次</h2>' +
                 '<p>' + that["FirstStation"] + ' - ' + that["LastStation"] + '</p>' +
@@ -124,7 +110,7 @@
         $.mobile.loading("hide");
 
         searchButton.button("option", "disabled", false);
-
+        
     };
 
     // $.mobile.loading("show");
