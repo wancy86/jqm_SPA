@@ -1,4 +1,20 @@
+TODO list:
 UI布局
 页面导航
 本地数据读取
 调用API
+pagecontainer load
+load local json
+公用的菜单栏
+仿微信
+
+
+优缺点：
+非MVC，上手快
+jQuery原生支持
+自定义主题
+
+组件较少
+事件支持较少
+icon较少
+
